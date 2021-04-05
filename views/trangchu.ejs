@@ -10,11 +10,20 @@
     <script src="libs/react-dom.development.js"></script>
     <script src="libs/browser.min.js"></script>
 </head>
+<style>
+    .mauvang{background-color: yellow;}
+</style>
 
 <body>
     <div id="root"></div>
     <script type="text/babel">
-        ReactDOM.render(<h1>Khoa Pham</h1>, document.getElementById("root"));
+        ReactDOM.render(
+            <div>
+                <h1>Khoa Pham</h1>
+                <h1 className="mauvang">Khoa Pham</h1>
+            </div>,
+            document.getElementById("root")
+        );
     </script>
 </body>
 
