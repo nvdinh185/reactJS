@@ -1,22 +1,40 @@
-class Welcome extends React.Component {
-    render() {
-        return <h1>Hello, {this.props.name}</h1>;
-    }
-}
+function formatDate(date) {
+    return date.toLocaleDateString();
+};
 
-const element = <Welcome name="Sara" />;
-
-function App() {
+function Comment(props) {
     return (
         <div>
-            <Welcome name="Sara" />
-            <Welcome name="Cahal" />
-            <Welcome name="Edite" />
+            <div>
+                <img
+                    src={props.author.avatarUrl}
+                    alt={props.author.name}
+                />
+                <div>
+                    {props.author.name}
+                </div>
+            </div>
+            <div>{props.text}</div>
+            <div>
+                {formatDate(props.date)}
+            </div>
         </div>
     );
-}
+};
 
+const comment = {
+    date: new Date(),
+    text: 'I hope you enjoy learning React!',
+    author: {
+        name: 'Hello Kitty',
+        avatarUrl: 'https://placekitten.com/g/64/64',
+    },
+};
 ReactDOM.render(
-    <App />
-    , document.getElementById('root')
+    <Comment
+        date={comment.date}
+        text={comment.text}
+        author={comment.author}
+    />,
+    document.getElementById('root')
 );
