@@ -1,25 +1,7 @@
-var KhoaPham = (props) => {
-    return (
-        <div>
-            <h1 className="mauvang">{props.ten} - {props.giangvien}</h1>
-            <p>{props.children}</p>
-            <KhoaHoc />
-        </div>
-    );
-};
-
-var KhoaHoc = () => {
-    return (
-        <div>
-            <h3>Lập trình ReactJS</h3>
-        </div>
-    );
-};
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
 
 ReactDOM.render(
-    <div>
-        <KhoaPham ten="ReactJS" giangvien="Mr. Khoa">Mon hoc ReactJS</KhoaPham>
-        <KhoaPham ten="NodeJS" giangvien="Mr. Pho">Mon hoc NodeJS</KhoaPham>
-    </div>,
+    element,
     document.getElementById("root")
 );
