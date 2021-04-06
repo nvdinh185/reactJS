@@ -2,6 +2,7 @@ var KhoaPham = (props) => {
     return (
         <div>
             <h1 className="mauvang">{props.ten} - {props.giangvien}</h1>
+            <p>{props.children}</p>
             <KhoaHoc />
         </div>
     );
@@ -17,8 +18,8 @@ var KhoaHoc = () => {
 
 ReactDOM.render(
     <div>
-        <KhoaPham ten="ReactJS" giangvien="Mr. Khoa" />
-        <KhoaPham ten="NodeJS" giangvien="Mr. Pho" />
+        <KhoaPham ten="ReactJS" giangvien="Mr. Khoa">Mon hoc ReactJS</KhoaPham>
+        <KhoaPham ten="NodeJS" giangvien="Mr. Pho">Mon hoc NodeJS</KhoaPham>
     </div>,
     document.getElementById("root")
 );
