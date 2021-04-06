@@ -1,54 +1,28 @@
-function formatDate(date) {
-    return date.toLocaleDateString();
-};
-
-function Avatar(props) {
-    return (
-        <img
-            src={props.user.avatarUrl}
-            alt={props.user.name}
-        />
-    );
-};
-
-function UserInfo(props) {
+function Clock(props) {
     return (
         <div>
-            <Avatar user={props.user} />
-            <div>
-                {props.user.name}
-            </div>
+            <h1>Hello, world!</h1>
+            <h2>It is {props.date.toLocaleTimeString()}.</h2>
         </div>
     );
 };
 
-function Comment(props) {
-    return (
-        <div>
+class Clock2 extends React.Component {
+    render() {
+        return (
             <div>
-                <UserInfo user={props.author} />
+                <h1>Hello, world!</h1>
+                <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
             </div>
-            <div>{props.text}</div>
-            <div>
-                {formatDate(props.date)}
-            </div>
-        </div>
+        );
+    }
+};
+
+function tick() {
+    ReactDOM.render(
+        <Clock2 date={new Date()} />,
+        document.getElementById('root')
     );
 };
 
-const comment = {
-    date: new Date(),
-    text: 'I hope you enjoy learning React!',
-    author: {
-        name: 'Hello Kitty',
-        avatarUrl: 'https://placekitten.com/g/64/64',
-    },
-};
-ReactDOM.render(
-    <Comment
-        date={comment.date}
-        text={comment.text}
-        author={comment.author}
-    />,
-    document.getElementById('root')
-);
+setInterval(tick, 1000);
