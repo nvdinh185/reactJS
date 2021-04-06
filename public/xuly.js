@@ -2,7 +2,15 @@ var KhoaPham = () => {
     return (
         <div>
             <h1 className="mauvang">Khoa Pham React</h1>
-            <h1 className="mauxanh">Khoa Pham React</h1>
+            <KhoaHoc />
+        </div>
+    );
+};
+
+var KhoaHoc = () => {
+    return (
+        <div>
+            <h3>Lập trình ReactJS</h3>
         </div>
     );
 };
