@@ -1,7 +1,7 @@
-var KhoaPham = () => {
+var KhoaPham = (props) => {
     return (
         <div>
-            <h1 className="mauvang">Khoa Pham React</h1>
+            <h1 className="mauvang">{props.ten} - {props.giangvien}</h1>
             <KhoaHoc />
         </div>
     );
@@ -17,8 +17,8 @@ var KhoaHoc = () => {
 
 ReactDOM.render(
     <div>
-        <KhoaPham />
-        <KhoaPham />
+        <KhoaPham ten="ReactJS" giangvien="Mr. Khoa" />
+        <KhoaPham ten="NodeJS" giangvien="Mr. Pho" />
     </div>,
     document.getElementById("root")
 );
