@@ -13,12 +13,20 @@ class Image extends React.Component {
         this.state = { url: arImgs[i].url };
     }
 
-    changeImage(n) {
-        if (n) {
-            i < arImgs.length - 1 ? i++ : i = 0;
-        } else {
-            i > 0 ? i-- : i = arImgs.length - 1;
-        }
+    componentDidMount() {
+        this.timerID = setInterval(
+            () => this.change(),
+            2000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
+
+    change() {
+        i == 0 ? i = arImgs.length - 1 : i--;
+
         this.state.url = arImgs[i].url;
         this.setState(this.state);
     }
@@ -26,11 +34,7 @@ class Image extends React.Component {
 
     render() {
         return (
-            <div>
-                <img src={this.state.url} /><br />
-                <button onClick={() => { this.changeImage(0) }}>Quay lại</button>
-                <button onClick={() => { this.changeImage(1) }}>Tiếp theo</button>
-            </div>
+            <img src={this.state.url} />
         );
     }
 }
