@@ -12,31 +12,21 @@ class List extends React.Component {
         this.state = { mang: ["NodeJS", "Angular", "Ionic", "ReactJS"] };
     }
 
-    change() {
-        i == 0 ? i = arImgs.length - 1 : i--;
-
-        this.state.url = arImgs[i].url;
+    add() {
+        this.state.mang.push("Android", "IOS");
         this.setState(this.state);
     }
 
-
     render() {
-        var i = 1;
+        const listItems = this.state.mang.map((note, index) =>
+            <Note key={index}>{note}</Note>
+        )
+
         return (
             <div>
-                i;
-                {
-                    <div>
-                        <button>Thêm</button>
-                        <button>Sửa</button>
-                    </div>
-                }
+                <button onClick={() => this.add()}>Thêm</button>
+                {listItems}
             </div>
-            // {
-            // this.state.mang.map((note, index) => {
-            //     return <Note key={index}>{note}</Note>
-            // })
-            // }
         );
     }
 }
