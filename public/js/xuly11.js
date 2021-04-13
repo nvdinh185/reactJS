@@ -5,7 +5,7 @@ function ActionLink() {
     }
 
     return (
-        <a href="#" onClick={handleClick}>
+        <a href="https://www.google.com.vn/" onClick={handleClick}>
             Click me
         </a>
     );
