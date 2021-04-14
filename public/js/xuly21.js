@@ -8,7 +8,7 @@ function GuestGreeting() {
 
 function LoginButton(props) {
     return (
-        <button onClick={props.onClick}>
+        <button onClick={props.onClickLogin}>
             Login
         </button>
     );
@@ -16,7 +16,7 @@ function LoginButton(props) {
 
 function LogoutButton(props) {
     return (
-        <button onClick={props.onClick}>
+        <button onClick={props.onClickLogout}>
             Logout
         </button>
     );
@@ -34,7 +34,7 @@ class LoginControl extends React.Component {
     constructor(props) {
         super(props);
         this.handleLoginClick = this.handleLoginClick.bind(this);
-        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        // this.handleLogoutClick = this.handleLogoutClick.bind(this);
         this.state = { isLoggedIn: false };
     }
 
@@ -50,9 +50,9 @@ class LoginControl extends React.Component {
         const isLoggedIn = this.state.isLoggedIn;
         let button;
         if (isLoggedIn) {
-            button = <LogoutButton onClick={this.handleLogoutClick} />;
+            button = <LogoutButton onClickLogout={() => this.handleLogoutClick()} />;
         } else {
-            button = <LoginButton onClick={this.handleLoginClick} />;
+            button = <LoginButton onClickLogin={this.handleLoginClick} />;
         }
 
         return (
