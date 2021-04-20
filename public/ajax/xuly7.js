@@ -65,8 +65,8 @@ class List extends React.Component {
     }
 
     render() {
-        const listItems = this.state.mang.map((note, index) =>
-            <Note key={index} id={index}>{note}</Note>
+        const listItems = this.state.mang.map(note =>
+            <Note key={note.id} id={note.id}>{note.name}</Note>
         )
 
         return (
@@ -82,6 +82,7 @@ class List extends React.Component {
 class InputDiv extends React.Component {
     send() {
         $.post("/add", { note: this.refs.txt.value }, (data) => {
+            // console.log(data);
             list.setState({ mang: data });
         });
         ReactDOM.unmountComponentAtNode(document.getElementById("div-add"));
