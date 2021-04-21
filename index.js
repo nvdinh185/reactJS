@@ -22,11 +22,7 @@ MongoClient.connect(url, (err, db) => {
     });
 
     app.get("/getNotes", (req, res) => {
-        dbo.collection("notes").find({}).toArray((err, result) => {
-            if (err) throw err;
-            for (let el of result) {
-                delete el._id;
-            }
+        dbo.collection("notes").find({}, { projection: { _id: 0 } }).toArray((err, result) => {
             mang = result;
             // console.log(mang);
             res.send(mang);
@@ -35,6 +31,7 @@ MongoClient.connect(url, (err, db) => {
 
     app.post("/add", parser, (req, res) => {
         var note = { id: mang.length, name: req.body.note };
+        mang.push(note);
         dbo.collection("notes").insertOne(note, function (err, res) { });
     })
 
