@@ -9,7 +9,7 @@ MongoClient.connect(url, function (err, db) {
     { id: 1, name: 'Angular' },
     { id: 2, name: 'ReactJS' }
   ];
-  dbo.collection("subjects").insertMany(myobj, function (err, res) {
+  dbo.collection("notes").insertMany(myobj, function (err, res) {
     if (err) throw err;
     console.log("Number of documents inserted: " + res.insertedCount);
     db.close();

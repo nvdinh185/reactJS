@@ -5,9 +5,9 @@ class Note extends React.Component {
     }
 
     delete() {
-        $.post("/delete", { idXoa: this.props.id }, (data) => {
-            list.setState({ mang: data });
-        })
+        $.post("/delete", { idXoa: this.props.id }, () => { });
+        list.state.mang = list.state.mang.filter((note) => note.id !== this.props.id);
+        list.setState(list.state);
     }
 
     edit() {
@@ -15,10 +15,12 @@ class Note extends React.Component {
     }
 
     save() {
-        $.post("/update", { idSua: this.props.id, noiDung: this.refs.txt.value }, (data) => {
-            list.setState({ mang: data });
-            this.setState({ onEdit: false });
-        })
+        $.post("/update", { idSua: this.props.id, noiDung: this.refs.txt.value }, () => { });
+        list.state.mang = list.state.mang.map(
+            note => (note.id === this.props.id ? { id: this.props.id, name: this.refs.txt.value } : note)
+        );
+        list.setState(list.state);
+        this.setState({ onEdit: false });
     }
 
     cancel() {
@@ -81,10 +83,10 @@ class List extends React.Component {
 
 class InputDiv extends React.Component {
     send() {
-        $.post("/add", { note: this.refs.txt.value }, (data) => {
-            // console.log(data);
-            list.setState({ mang: data });
-        });
+        $.post("/add", { note: this.refs.txt.value }, () => { });
+        let user = { id: list.state.mang.length, name: this.refs.txt.value };
+        list.state.mang = [...list.state.mang, user];
+        list.setState(list.state);
         ReactDOM.unmountComponentAtNode(document.getElementById("div-add"));
     }
 

@@ -22,54 +22,34 @@ MongoClient.connect(url, (err, db) => {
     });
 
     app.get("/getNotes", (req, res) => {
-        dbo.collection("subjects").find({}).toArray((err, result) => {
+        dbo.collection("notes").find({}).toArray((err, result) => {
             if (err) throw err;
             for (let el of result) {
                 delete el._id;
             }
             mang = result;
             // console.log(mang);
-            res.send(result);
+            res.send(mang);
         })
     });
 
     app.post("/add", parser, (req, res) => {
-        let newNote = req.body.note;
-
-        var myobj = { id: mang.length, name: newNote };
-        mang.push(myobj);
-        dbo.collection("subjects").insertOne(myobj, function (err, res) { });
-        res.send(mang);
+        var note = { id: mang.length, name: req.body.note };
+        dbo.collection("notes").insertOne(note, function (err, res) { });
     })
 
     app.post("/delete", parser, (req, res) => {
-        let id = req.body.idXoa;
-        let myquery = { id: parseInt(id) };
-        dbo.collection("subjects").deleteOne(myquery, function (err, obj) { });
-        let index = -1;
-        mang.forEach((el, idx) => {
-            if (el.id == id) index = idx;
-        });
-        if (index > -1) {
-            mang.splice(index, 1);
-        }
-        res.send(mang);
+        let id = parseInt(req.body.idXoa);
+        let myquery = { id: id };
+        dbo.collection("notes").deleteOne(myquery, function (err, res) { });
     })
 
     app.post("/update", parser, (req, res) => {
-        let id = req.body.idSua;
+        let id = parseInt(req.body.idSua);
         let name = req.body.noiDung;
-        var myquery = { id: parseInt(id) };
+        var myquery = { id: id };
         var newvalues = { $set: { name: name } };
-        dbo.collection("subjects").updateOne(myquery, newvalues, function (err, res) { });
-        let index = -1;
-        mang.forEach((el, idx) => {
-            if (el.id == id) index = idx;
-        });
-        if (index > -1) {
-            mang[index] = { id: parseInt(id), name: name };
-        }
-        res.send(mang);
+        dbo.collection("notes").updateOne(myquery, newvalues, function (err, res) { });
     })
 
     // db.close();
