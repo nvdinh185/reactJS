@@ -15,7 +15,6 @@ app.listen(3000, () => console.log("Server is running in port 3000..."));
 MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     var dbo = db.db("learnJs");
-    var mang = [];
 
     app.get("/", (req, res) => {
         res.render("trangchu");
@@ -23,15 +22,13 @@ MongoClient.connect(url, (err, db) => {
 
     app.get("/getNotes", (req, res) => {
         dbo.collection("notes").find({}, { projection: { _id: 0 } }).toArray((err, result) => {
-            mang = result;
-            // console.log(mang);
-            res.send(mang);
+            // console.log(result);
+            res.send(result);
         })
     });
 
     app.post("/add", parser, (req, res) => {
-        var note = { id: mang.length, name: req.body.note };
-        mang.push(note);
+        var note = { id: parseInt(req.body.id), name: req.body.name };
         dbo.collection("notes").insertOne(note, function (err, res) { });
     })
 

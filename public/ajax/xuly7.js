@@ -83,9 +83,9 @@ class List extends React.Component {
 
 class InputDiv extends React.Component {
     send() {
-        $.post("/add", { note: this.refs.txt.value }, () => { });
-        let user = { id: list.state.mang.length, name: this.refs.txt.value };
-        list.state.mang = [...list.state.mang, user];
+        let note = { id: list.state.mang.length, name: this.refs.txt.value };
+        $.post("/add", note, () => { });
+        list.state.mang = [...list.state.mang, note];
         list.setState(list.state);
         ReactDOM.unmountComponentAtNode(document.getElementById("div-add"));
     }
