@@ -61,11 +61,11 @@ class ProductTable extends React.Component {
         });
 
         return (
-            <table>
+            <table className="table-css">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Price</th>
+                        <th style={{ border: '1px solid #f30a0a' }}>Name</th>
+                        <th style={{ border: '1px solid #f30a0a' }}>Price</th>
                     </tr>
                 </thead>
                 <tbody>{rows}</tbody>
@@ -105,8 +105,8 @@ class SearchBar extends React.Component {
                         onChange={this.handleInStockChange}
                     />
                     {' '}
-            Only show products in stock
-          </p>
+                    Only show products in stock
+                </p>
             </form>
         );
     }
@@ -154,7 +154,6 @@ class FilterableProductTable extends React.Component {
         );
     }
 }
-
 
 const PRODUCTS = [
     { category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' },
