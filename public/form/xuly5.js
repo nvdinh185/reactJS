@@ -26,7 +26,7 @@ class Reservation extends React.Component {
             <form>
                 <label>
                     Is going:
-            <input
+                    <input
                         name="isGoing"
                         type="checkbox"
                         checked={this.state.isGoing}
@@ -36,7 +36,7 @@ class Reservation extends React.Component {
                 <br />
                 <label>
                     Number of guests:
-            <input
+                    <input
                         name="numberOfGuests"
                         type="number"
                         value={this.state.numberOfGuests}

@@ -36,7 +36,7 @@ class SignUpDialog extends React.Component {
                     onChange={this.handleChange} />
                 <button onClick={this.handleSignUp}>
                     Sign Me Up!
-          </button>
+                </button>
             </Dialog>
         );
     }
