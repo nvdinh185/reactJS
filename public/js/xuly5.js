@@ -1,6 +1,6 @@
 function Square(props) {
     return (
-        <button className="square" onClick={props.onClick}>
+        <button className="square" onClick={props.clickMe}>
             {props.value}
         </button>
     );
@@ -24,7 +24,7 @@ class Board extends React.Component {
         return (
             <Square
                 value={this.state.squares[i]}
-                onClick={() => this.handleClick(i)}
+                clickMe={() => this.handleClick(i)}
             />
         );
     }
