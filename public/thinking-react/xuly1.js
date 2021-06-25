@@ -72,8 +72,8 @@ class SearchBar extends React.Component {
                 <p>
                     <input type="checkbox" />
                     {' '}
-            Only show products in stock
-          </p>
+                    Only show products in stock
+                </p>
             </form>
         );
     }
@@ -89,7 +89,6 @@ class FilterableProductTable extends React.Component {
         );
     }
 }
-
 
 const PRODUCTS = [
     { category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' },
