@@ -9,3 +9,4 @@ function tick() {
 }
 
 setInterval(tick, 1000);
+// setTimeout(tick, 5000);

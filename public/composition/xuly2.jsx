@@ -1,18 +1,18 @@
 function Contacts() {
-    return <div className="Contacts" />;
+    return <div className="contacts" />;
 }
 
 function Chat() {
-    return <div className="Chat" />;
+    return <div className="chat" />;
 }
 
 function SplitPane(props) {
     return (
-        <div className="SplitPane">
-            <div className="SplitPane-left">
+        <div className="split-pane">
+            <div className="split-pane-left">
                 {props.left}
             </div>
-            <div className="SplitPane-right">
+            <div className="split-pane-right">
                 {props.right}
             </div>
         </div>

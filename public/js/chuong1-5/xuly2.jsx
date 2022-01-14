@@ -13,7 +13,7 @@ const element = (
         <h1>
             Hello, {formatName(user)}!
         </h1>
-        <img src={user.avatarUrl}></img>
+        <img src={user.avatarUrl} />
     </div>
 );
 

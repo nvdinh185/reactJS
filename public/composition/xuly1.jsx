@@ -1,6 +1,6 @@
 function FancyBorder(props) {
     return (
-        <div className={'FancyBorder FancyBorder-' + props.color}>
+        <div className={'fancy-border fancy-border-' + props.color}>
             {props.children}
         </div>
     );
@@ -9,10 +9,10 @@ function FancyBorder(props) {
 function WelcomeDialog() {
     return (
         <FancyBorder color="blue">
-            <h1 className="Dialog-title">
+            <h1 className="dialog-title">
                 Welcome
             </h1>
-            <p className="Dialog-message">
+            <p className="dialog-message">
                 Thank you for visiting our spacecraft!
             </p>
         </FancyBorder>

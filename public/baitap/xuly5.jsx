@@ -1,4 +1,4 @@
-var arImgs = [
+const arImgs = [
     { url: "https://icdn.dantri.com.vn/zoom/480_320/2021/04/08/img-1938-1617869839500.jpg" },
     { url: "https://icdn.dantri.com.vn/zoom/468_310/2021/04/09/dung-dang-kiem-xe-o-to-bien-ngoai-giao-chua-sang-ten-1-1617927787224.jpg" },
     { url: "https://icdn.dantri.com.vn/zoom/468_310/2021/04/08/2021-hyundaialcazar-2-1617873828064.jpg" },

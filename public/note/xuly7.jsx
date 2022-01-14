@@ -1,3 +1,10 @@
+function uuidv4() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+
 class Note extends React.Component {
     constructor(props) {
         super(props);
@@ -6,7 +13,7 @@ class Note extends React.Component {
 
     delete() {
         $.post("/delete", { idXoa: this.props.id }, () => {
-            list.state.mang = list.state.mang.filter((note) => note.id !== this.props.id);
+            list.state.mang = list.state.mang.filter(note => note.id !== this.props.id);
             list.setState(list.state);
         });
     }
@@ -63,7 +70,7 @@ class List extends React.Component {
     }
 
     componentDidMount() {
-        $.get("/getNotes", (data) => {
+        $.get("/getNotes", data => {
             this.setState({ mang: data });
         });
     }
@@ -85,7 +92,7 @@ class List extends React.Component {
 
 class InputDiv extends React.Component {
     send() {
-        let note = { id: list.state.mang.length, name: this.refs.txt.value };
+        let note = { id: uuidv4(), name: this.refs.txt.value };
         $.post("/add", note, () => {
             list.state.mang = [...list.state.mang, note];
             list.setState(list.state);

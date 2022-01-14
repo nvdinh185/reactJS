@@ -1,4 +1,4 @@
-var KhoaPham = (props) => {
+const KhoaPham = (props) => {
     return (
         <div>
             <h1 className="mauvang">{props.ten} - {props.giangvien}</h1>
@@ -8,7 +8,7 @@ var KhoaPham = (props) => {
     );
 };
 
-var KhoaHoc = () => {
+const KhoaHoc = () => {
     return (
         <div>
             <h3>Lập trình ReactJS</h3>

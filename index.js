@@ -28,26 +28,25 @@ MongoClient.connect(url, (err, db) => {
     });
 
     app.post("/add", parser, (req, res) => {
-        let note = { id: parseInt(req.body.id), name: req.body.name };
-        dbo.collection("notes").insertOne(note, function (err, data) {
+        const note = req.body;
+        dbo.collection("notes").insertOne(note, () => {
             // console.log(data.insertedCount);
             res.send();
         });
     });
 
     app.post("/delete", parser, (req, res) => {
-        let id = parseInt(req.body.idXoa);
-        let myquery = { id: id };
+        const idXoa = req.body.idXoa;
+        const myquery = { id: idXoa };
         dbo.collection("notes").deleteOne(myquery, function (err, data) {
             res.send();
         });
     });
 
     app.post("/update", parser, (req, res) => {
-        let id = parseInt(req.body.idSua);
-        let name = req.body.noiDung;
-        let myquery = { id: id };
-        let newvalues = { $set: { name: name } };
+        const { idSua, noiDung } = req.body;
+        const myquery = { id: idSua };
+        const newvalues = { $set: { name: noiDung } };
         dbo.collection("notes").updateOne(myquery, newvalues, function (err, data) {
             res.send();
         });

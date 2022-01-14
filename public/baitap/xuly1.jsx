@@ -12,7 +12,7 @@ class Hello extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={() => { this.addNumber() }}>Hello {this.state.number}</button>
+                <button onClick={() => this.addNumber()}>Hello {this.state.number}</button>
             </div>
         );
     }
