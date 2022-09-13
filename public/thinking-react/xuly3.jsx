@@ -64,8 +64,8 @@ class ProductTable extends React.Component {
             <table className="table-css">
                 <thead>
                     <tr>
-                        <th style={{ border: '1px solid #f30a0a' }}>Name</th>
-                        <th style={{ border: '1px solid #f30a0a' }}>Price</th>
+                        <th style={{ border: '1px solid violet' }}>Name</th>
+                        <th style={{ border: '1px solid violet' }}>Price</th>
                     </tr>
                 </thead>
                 <tbody>{rows}</tbody>
@@ -139,7 +139,7 @@ class FilterableProductTable extends React.Component {
 
     render() {
         return (
-            <div style={{ border: '1px solid violet', width: '170px' }}>
+            <div style={{ border: '5px solid green', width: '170px' }}>
                 <SearchBar
                     filterText={this.state.filterText}
                     inStockOnly={this.state.inStockOnly}

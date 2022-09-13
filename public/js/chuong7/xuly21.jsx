@@ -6,6 +6,14 @@ function GuestGreeting() {
     return <h1>Please sign up.</h1>;
 }
 
+function Greeting(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+        return <UserGreeting />;
+    }
+    return <GuestGreeting />;
+}
+
 function LoginButton(props) {
     return (
         <button onClick={props.onClickLogin}>
@@ -20,14 +28,6 @@ function LogoutButton(props) {
             Logout
         </button>
     );
-}
-
-function Greeting(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-        return <UserGreeting />;
-    }
-    return <GuestGreeting />;
 }
 
 class LoginControl extends React.Component {
