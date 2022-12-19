@@ -6,17 +6,16 @@ class NameForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log('A name was submitted: ' + this.input.current.value);
         event.preventDefault();
+        console.log('A name was submitted: ' + this.input.current.value);
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Name:
-                    <input type="text" ref={this.input} />
-                </label>
+                <label>Name:</label>
+                <input type="text" ref={this.input} />
+
                 <input type="submit" value="Submit" />
             </form>
         );

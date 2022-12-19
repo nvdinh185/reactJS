@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const parser = bodyParser.urlencoded({ extended: false });
 
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
+app.use(cors());
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -15,10 +17,6 @@ app.listen(3000, () => console.log("Server is running in port 3000..."));
 MongoClient.connect(url, (err, db) => {
     if (err) throw err;
     const dbo = db.db("learnJs");
-
-    app.get("/", (req, res) => {
-        res.render("trangchu");
-    });
 
     app.get("/getNotes", (req, res) => {
         dbo.collection("notes").find({}, { projection: { _id: 0 } }).sort({ id: 1 }).toArray((err, data) => {
